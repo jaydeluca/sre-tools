@@ -12,6 +12,15 @@ sudo kill -9 {pid)
 ```
 
 
+## CPU
+```bash
+# check cpu, ignore idle processes
+top -i
+
+# not always included out of the box, but nice
+htop
+```
+
 ## File System
 ```bash
 # checking filesystem space usage
