@@ -26,9 +26,6 @@ SELECT pg_terminate_backend(__pid__);
 -- all database users
 SELECT * FROM pg_stat_activity WHERE current_query not like '<%';
 
--- all databases and their sizes
-SELECT * FROM pg_user;
-
 
 
 -- Table / Indexes ----------------------------------------------------

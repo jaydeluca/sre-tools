@@ -1,0 +1,5 @@
+# Taps
+tap "wallix/awless"
+
+# Installs
+brew "awless"
