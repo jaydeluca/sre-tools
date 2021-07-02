@@ -140,3 +140,26 @@ select pid,
        query as blocked_query
 from pg_stat_activity
 where cardinality(pg_blocking_pids(pid)) > 0;
+
+
+-- Transaction IDs ----------------------------------------------------
+
+-- https://blog.crunchydata.com/blog/managing-transaction-id-wraparound-in-postgresql
+-- percent_towards_wraparound and percent_towards_emergency_autovac should be acted upon immediately (vacuums) if approaching 100% 
+WITH max_age AS ( 
+    SELECT 2000000000 as max_old_xid
+        , setting AS autovacuum_freeze_max_age 
+        FROM pg_catalog.pg_settings 
+        WHERE name = 'autovacuum_freeze_max_age' )
+, per_database_stats AS ( 
+    SELECT datname
+        , m.max_old_xid::int
+        , m.autovacuum_freeze_max_age::int
+        , age(d.datfrozenxid) AS oldest_current_xid 
+    FROM pg_catalog.pg_database d 
+    JOIN max_age m ON (true) 
+    WHERE d.datallowconn ) 
+SELECT max(oldest_current_xid) AS oldest_current_xid
+    , max(ROUND(100*(oldest_current_xid/max_old_xid::float))) AS percent_towards_wraparound
+    , max(ROUND(100*(oldest_current_xid/autovacuum_freeze_max_age::float))) AS percent_towards_emergency_autovac 
+FROM per_database_stats
