@@ -9,6 +9,7 @@ Collection of useful scripts, commands, and other tools that come in handy while
 * [Linux](linux/README.md)
 * [Networking](networking/README.md)
 * [Tools](tools/README.md)
+* [Scripts](scripts/README.md)
 
 
 ## Other Resources
