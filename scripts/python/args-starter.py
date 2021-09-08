@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Example usage: python3 python-args-starter.py --input "test input" --file test.txt
+# Example usage: python3 args-starter.py --input "test input" --file test.txt
 
 import argparse
 import os.path

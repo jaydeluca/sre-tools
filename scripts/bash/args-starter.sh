@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Example usage: ./bash-starter.sh --flag --param test arg1 arg2
+# Example usage: ./args-starter.sh --flag --param test arg1 arg2
 
 set -Eeuo pipefail
 set -x
