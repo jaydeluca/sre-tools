@@ -19,7 +19,7 @@
 Retrieve stack trace of a long running thread on a linux server:
 ```bash
 # Find java PID
-ps aux grep java
+ps aux | grep java
 
 # Pass in PID to see individual threads, look for long running
 top -n 1 -H -p PID
