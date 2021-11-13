@@ -4,9 +4,12 @@
 # Example usage: python3 args-starter.py --input "test input" --file test.txt
 
 import argparse
-import os.path
-from os import path
+from os import path, environ
 import logging
+from ApiClient import ApiClient
+
+api_key = environ.get('API_KEY')
+
 
 class Main(object):
     def __init__(self, args):
@@ -22,9 +25,12 @@ class Main(object):
             else:
                 logging.error(f"Unable to find file {args.file}")
 
-
         if args.input:
             print(f"Input: {args.input}")
+
+        client = ApiClient(api_key)
+        print(client.get_google())
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Script')

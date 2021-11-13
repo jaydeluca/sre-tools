@@ -1,2 +1,3 @@
 */Brewfile.lock.json
 *.idea
+__pycache__
