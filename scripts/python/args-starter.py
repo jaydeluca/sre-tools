@@ -4,6 +4,7 @@
 # Example usage: python3 args-starter.py --input "test input" --file test.txt
 
 import argparse
+import requests
 from os import path, environ
 import logging
 from ApiClient import ApiClient
@@ -29,7 +30,8 @@ class Main(object):
             print(f"Input: {args.input}")
 
         client = ApiClient(api_key)
-        print(client.get_google())
+        result: requests.models.Response = client.get_google()
+        print(result.json())
 
 
 if __name__ == '__main__':
